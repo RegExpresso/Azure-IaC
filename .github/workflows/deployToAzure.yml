@@ -36,11 +36,14 @@ jobs:
           # Set this value to true to enable Azure PowerShell Login in addition to Az CLI login
           enable-AzPSSession: true
 
+      - name: List directory contents
+        run: ls -l ./Chapter01_Challenge
+
       - name: Bild the bicep file into ARM
         uses: Azure/cli@v1.0.9
         with:
           # Specify the script here
-          inlineScript: az bicep build --file "./Chapter01_Challenge/main.bicep" --outfile "./Chapter01_Challenge/main.json"
+          inlineScript: az bicep build --file ./Chapter01_Challenge/main.bicep --outfile ./Chapter01_Challenge/main.json
           
       - name: Create the ResourceGroup
         uses: Azure/powershell@v1
